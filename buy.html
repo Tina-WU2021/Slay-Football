@@ -1,131 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <title>Ticket Booking - PSV Eindhoven vs Girona FC</title>
     <style>
-        .ticket-section {
-            margin-top: 20px;
-        }
-        .stadium-image {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
+      .available {
+        fill: rgb(73, 80, 73); /
+      }
+      .occupied {
+        fill: rgb(185, 80, 80);
+      }
+      .selected {
+        fill: rgb(90, 109, 177);
+      }
     </style>
-</head>
+    <script src="./scripts/seatmap.js"></script>
+  </head>
 
-<body class="bg-light">
+  <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">SlayFootball</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-success text-white" href="#">Login</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="index.html">SlayFootball</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-success text-white" href="#">Login</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
-    <div class="container ticket-section">
-        <h2 class="text-center mb-4"> Tehelné Pole Football Stadium</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="assets/football match1.png" alt=" Tehelné Pole Football Stadium" class="img-fluid">
-                <h5 class="mt-3">Match Details</h5>
-                <p>Date: 2024-11-15</p>
-                <p>Venue: Philips Stadion, Eindhoven</p>
-                <p>Kick-off: 20:00 CET</p>
+    <div class="container pt-3">
+      <h2 class="text-center mb-4">Tehelné Pole Football Stadium</h2>
+      <div class="row">
+        <div class="col-md-5">
+          <img
+            src="assets/football match1.png"
+            alt=" Tehelné Pole Football Stadium"
+            class="img-fluid"
+          />
+          <h5 class="mt-3">Match Details</h5>
+          <p>Date: 2024-11-15</p>
+          <p>Venue: Philips Stadion, Eindhoven</p>
+          <p>Kick-off: 20:00 CET</p>
 
-                <h5 class="mt-3">Select Ticket Type</h5>
-                <select class="form-select mb-3" id="ticket-type">
-                    <option value="50" selected>Purple area Ticket - $50.00</option>
-                    <option value="75">Green area Ticket - $75.00</option>
-                    <option value="30">Pink area Ticket - $30.00</option>
-                    <option value="100">Blue area Ticket - $100.00</option>
-                    <option value="1000" id="vip-option">VIP Ticket(Sextuple Room) - $1000.00</option>
-                </select>
-                <h5 class="mt-3">Select Ticket Quantity(Maximum 5 tickets or one VIP box ticket)</h5>
-                <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button" id="button-minus">-</button>
-                    <input type="text" class="form-control text-center" id="ticket-quantity" value="1" readonly>
-                    <button class="btn btn-outline-secondary" type="button" id="button-plus">+</button>
-                </div>
-                <h5 class="mt-3">Total Price</h5>
-                <p>Total Price: <span id="total-price" class="fw-bold">$50.00</span></p>
-                <button class="btn btn-primary mt-3" id="book-tickets">Book Tickets</button>
+          <h5 class="mt-3">Select Ticket Type</h5>
+          <select class="form-select mb-3" id="ticket-type">
+            <option value="default" selected>---Please Select---</option>
+            <option value="areaA">Purple area Ticket - $50.00</option>
+            <option value="75">Green area Ticket - $75.00</option>
+            <option value="30">Pink area Ticket - $30.00</option>
+            <option value="100">Blue area Ticket - $100.00</option>
+          </select>
+          <div>
+            <h5 class="mt-3">Select Ticket Quantity</h5>
+            <div class="input-group mb-3">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-minus"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                class="form-control text-center"
+                id="ticket-quantity"
+                value="1"
+                readonly
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-plus"
+              >
+                +
+              </button>
             </div>
-            <div class="col-md-6">
-                <img src="assets/stadium.png" alt="Philips Stadion" class="stadium-image">
-            </div>
+          </div>
+          <h5 class="mt-3">Total Price</h5>
+          <p>
+            Total Price: <span id="total-price" class="fw-bold">$50.00</span>
+          </p>
+          <button class="btn btn-primary mt-3" id="book-tickets">
+            Book Tickets
+          </button>
         </div>
+        <div class="col-md-7">
+          <div class="text-center">
+            <img
+              src="assets/CourtMap.png"
+              alt="Philips Stadion"
+              class="img-fluid"
+              style="max-width: 500px; width: 70%"
+            />
+          </div>
+
+          <div>
+            <h2 class="text-center mt-3">Select Your Seat</h2>
+
+            <div class="row">
+              <div
+                class="court-area"
+                style="
+                  width: 100%;
+                  height: 50px;
+                  background-color: lightgray;
+
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 24px;
+                  color: black;
+                "
+              >
+                Court
+              </div>
+              <h5 class="text-center mt-3" id="selectedSeatDisplay">
+                Seat(s) selected:
+              </h5>
+              <svg id="seatMap" width="600" height="300"></svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3">
-        ©Slay Football - EIE4432 Group Project
+    <div class="container mt-5"></div>
+
+    <footer class="bg-dark text-white text-center fixed-bottom">
+      ©Slay Football - EIE4432 Group Project
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        const buttonMinus = document.getElementById('button-minus');
-        const buttonPlus = document.getElementById('button-plus');
-        const ticketQuantity = document.getElementById('ticket-quantity');
-        const totalPrice = document.getElementById('total-price');
-        const ticketType = document.getElementById('ticket-type');
+      const buttonMinus = document.getElementById("button-minus");
+      const buttonPlus = document.getElementById("button-plus");
+      const ticketQuantity = document.getElementById("ticket-quantity");
+      const totalPrice = document.getElementById("total-price");
+      const ticketType = document.getElementById("ticket-type");
 
-        let quantity = 1;
-        const maxQuantity = 5;
+      let quantity = 1;
+      const maxQuantity = 5;
 
-        function updateTotalPrice() {
-            const pricePerTicket = parseFloat(ticketType.value);
-            totalPrice.innerText = `$${(quantity * pricePerTicket).toFixed(2)}`;
+      function updateTotalPrice() {
+        const pricePerTicket = parseFloat(ticketType.value);
+        totalPrice.innerText = `$${(quantity * pricePerTicket).toFixed(2)}`;
+      }
+
+      buttonMinus.addEventListener("click", () => {
+        if (quantity > 1) {
+          quantity--;
+          ticketQuantity.value = quantity;
+          updateTotalPrice();
         }
+      });
 
-        buttonMinus.addEventListener('click', () => {
-            if (quantity > 1) {
-                quantity--;
-                ticketQuantity.value = quantity;
-                updateTotalPrice();
-            }
-        });
+      buttonPlus.addEventListener("click", () => {
+        if (quantity < maxQuantity && ticketType.value !== "150") {
+          // VIP ticket cannot increase quantity
+          quantity++;
+          ticketQuantity.value = quantity;
+          updateTotalPrice();
+        }
+      });
 
-        buttonPlus.addEventListener('click', () => {
-            if (quantity < maxQuantity && ticketType.value !== "150") { // VIP ticket cannot increase quantity
-                quantity++;
-                ticketQuantity.value = quantity;
-                updateTotalPrice();
-            }
-        });
+      ticketType.addEventListener("change", () => {
+        if (ticketType.value === "150") {
+          // If VIP is selected
+          quantity = 1;
+          ticketQuantity.value = quantity;
+          ticketQuantity.setAttribute("readonly", true); // Disable input
+        } else {
+          ticketQuantity.removeAttribute("readonly"); // Enable input
+        }
+        updateTotalPrice();
+      });
 
-        ticketType.addEventListener('change', () => {
-            if (ticketType.value === "150") { // If VIP is selected
-                quantity = 1;
-                ticketQuantity.value = quantity;
-                ticketQuantity.setAttribute("readonly", true); // Disable input
-            } else {
-                ticketQuantity.removeAttribute("readonly"); // Enable input
-            }
-            updateTotalPrice();
-        });
-
-        document.getElementById('book-tickets').addEventListener('click', () => {
-            alert(`You have booked ${quantity} tickets for a total of $${(quantity * parseFloat(ticketType.value)).toFixed(2)}`);
-        });
+      document.getElementById("book-tickets").addEventListener("click", () => {
+        alert(
+          `You have booked ${quantity} tickets for a total of $${(quantity * parseFloat(ticketType.value)).toFixed(2)}`
+        );
+      });
     </script>
-</body>
-
+  </body>
 </html>

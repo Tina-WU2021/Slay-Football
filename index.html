@@ -10,6 +10,24 @@
         .hidden {
             display: none;
         }
+        ul {
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        list-style-type: '\002D';
+        }
+
+        li {
+           padding-top: 0.5rem;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
     </style>
 </head>
 
@@ -22,7 +40,7 @@
             <div>
                 <div class="navbar-nav px-3">
                     <a class="nav-link active link-primary fw-bold px-3" href="">Events & Tickets</a>
-                    <a class="nav-link px-3" href="contact.html">Contact</a>
+                    <a class="nav-link px-3" href="./contact.html">Contact</a>
                     <button type="button" class="btn btn-success">
                         <span id="iconText" class="d-none d-sm-inline">Login</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -37,30 +55,38 @@
 
     <div class="container py-3">
         <div class="row">
-            <div class="col-md-3 bg-white border border-dark-subtle rounded-4">
+            <div class="col-md-4 col-lg-3 bg-white border border-dark-subtle rounded-4">
                 <div class="p-3">
-                    <h5>User</h5>
+                    <h5>&#x26BD; User</h5>
                     <ul>
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="update profile.html">Update Profile</a></li>
+                        <li><a href="./profile.html">Profile</a></li>
+                        <li><a href="./updateProfile.html">Update Profile</a></li>
                     </ul>
-                    <h5>Event</h5>
+                    <h5>&#x26BD; Event</h5>
                     <ul>
-                        <li><a href="ticket history.html">Ticket History</a></li>
+                        <li><a href="./ticketHistory.html">Ticket History</a></li>
                     </ul>
-                    <h5>Admin</h5>
+                    <h5>&#x26BD; Admin</h5>
                     <ul>
-                        <li><a href="">User Management</a></li>
-                        <li><a href="">Event Management</a></li>
-                        <li><a href="">Seat Management</a></li>
+                        <li><a href="./admin-userManagement.html">User Management</a></li>
+                        <li><a href="./admin-eventManagement.html">Event Management</a></li>
+                        <li><a href="./admin-seatManagement.html">Seat Management</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-md-9">
-              <img src="assets/football.png" alt="SlayFootball" title="SlayFootball" style="width: 1000px" />
+            <div class="col-md-8 col-lg-9 d-none d-md-flex justify-content-center">
+              <img src="assets/football.png" alt="SlayFootball" title="SlayFootball" class="img-fluid"  />
             </div>
-                <h3 class="mb-3">Upcoming Events</h3>
+                
+
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="mb-3">Upcoming Events</h3>
                 <div class="mb-3">
                     <label for="stadiumFilter" class="form-label">Filter by Stadium:</label>
                     <select class="form-select" id="stadiumFilter">
@@ -73,10 +99,20 @@
 
                 <div class="list-group" id="eventList">
                     <div class="list-group-item stadium-A">
-                        <h5 class="mb-1">SK Slovan Bratislava vs GNK Dinamo Zagreb</h5>
-                        <p class="mb-1">Date: 2024-11-15</p>
-                        <p class="mb-1">Stadium:  Tehelné Pole Football Stadium</p>
-                        <a href="buy.html" class="btn btn-primary">Buy Tickets</a>
+                        <div class=" row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-1">SK Slovan Bratislava vs GNK Dinamo Zagreb</h5>
+                            <p class="mb-1">Date: 2024-11-15</p>
+                            <p class="mb-1">Stadium: Tehelné Pole Football Stadium</p>
+                            <a href="buy.html" class="btn btn-primary">Buy Tickets</a>
+                        </div>
+                        <div class="col-md-4">
+                            <img
+                                src="assets/football match1.png"
+                                alt="Tehelné Pole Football Stadium"
+                                class="img-fluid rounded-4"
+                            />
+                        </div>
                     </div>
                     <div class="list-group-item stadium-B">
                         <h5 class="mb-1">Match 2: Team C vs Team D</h5>
@@ -134,9 +170,6 @@
                     </div>
                 </div>
 
-                
-            </div>
-        </div>
     </div>
 
     <footer class="bg-dark text-white text-center fixed-bottom">

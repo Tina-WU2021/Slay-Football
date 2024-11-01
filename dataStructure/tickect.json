@@ -1,0 +1,18 @@
+[
+  {
+    "user": "alice",
+    "time": "ecila",
+    "event": {
+      "title": "",
+      "description": ""
+    },
+    "seat": [
+      {
+        "row": "",
+        "column": "",
+        "price": 100
+      }
+    ],
+    "paidAmount": 200
+  }
+]
