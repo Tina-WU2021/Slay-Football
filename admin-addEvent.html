@@ -9,19 +9,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>Seat Management</title>
-    <script src="./scripts/admin-sitemap.js"></script>
-    <style>
-      .available {
-        fill: rgb(73, 80, 73); /
-      }
-      .occupied {
-        fill: rgb(185, 80, 80);
-      }
-      .selected {
-        fill: rgb(90, 109, 177);
-      }
-    </style>
+    <title>User Management</title>
   </head>
 
   <body class="bg-light">
@@ -53,41 +41,60 @@
     </nav>
 
     <div class="container">
-      <h2 class="text-center mb-4">Venue Seat Management</h2>
-      <div class="row">
-        <div class="col-6">
-          <div>
-            <h5 class="mt-3">Select Venu</h5>
-            <select class="form-select mb-3" id="ticket-type">
-              <option value="default" selected>---Please Select---</option>
-              <option value="StadiumA">Stadium A</option>
-              <option value="StadiumB">Stadium B</option>
-            </select>
+      <h2 class="text-center mb-4">Add Event</h2>
+
+      <form>
+        <div class="row">
+          <div class="col-8">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title:</label>
+              <input type="text" class="form-control" id="title" required />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                required
+              />
+            </div>
           </div>
-          <div class="d-flex align-items-center">
-            <h5 class="mt-3">Add Venue</h5>
-            <button
-              class="btn btn-outline-secondary mx-3"
-              type="button"
-              id="button-plus"
-            >
-              +
-            </button>
+          <div class="col-4 text-center">
+            <img
+              src="assets/ImgPlaceholder.png"
+              alt="coverImage"
+              class="img-fluid"
+              style="max-width: 500px; width: 70%"
+            />
           </div>
         </div>
-        <div class="col-6">
-          <img
-            src="assets/CourtMap.png"
-            alt="courtMap"
-            class="img-fluid"
-            style="max-width: 500px; width: 70%"
+        <div class="mb-3">
+          <label for="eventTime" class="form-label">Event date and time:</label>
+          <input
+            type="datetime-local"
+            id="eventTime"
+            name="eventTime"
+            class="form-control"
+            required
           />
         </div>
-      </div>
-      <h4 class="bg-success p-3 my-3 text-center text-white">
-        <span>Statium A</span> areas
-      </h4>
-      <div id="adminSeatMap" class="row justify-content-center"></div>
+        <div class="mb-3">
+          <label for="venue" class="form-label">Venue:</label>
+          <select class="form-select mb-3" id="venue" required>
+            <option value="default" selected>---Please Select---</option>
+            <option value="StadiumA">Stadium A</option>
+            <option value="StadiumB">Stadium B</option>
+          </select>
+        </div>
+        <div class="d-flex gap-3">
+          <button type="submit" class="btn btn-primary">Create</button>
+
+          <a href="./admin-eventManagement.html" class="btn btn-secondary"
+            >Back to Event List</a
+          >
+        </div>
+      </form>
     </div>
 
     <footer class="bg-dark text-white text-center fixed-bottom">

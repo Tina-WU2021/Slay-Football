@@ -1,7 +1,8 @@
 [
   {
     "venuName": "alice",
-    "areaList": ["areaA","areaB"],
+    "vanuePic": "",
+    "areaList": ["areaA","areaB","areaC"],
     "areaA": [
         { "row": 1, "seats": 5, "seatsData": [
             { "column": 1, "status": "available", "price": 100 },
@@ -24,6 +25,45 @@
             { "column": 2, "status": "available", "price": 100 },
             { "column": 3, "status": "occupied", "price": 100 },
             { "column": 4, "status": "available", "price": 100 },
+            { "column": 5, "status": "available", "price": 100 }
+        ]}],
+        "areaB": [
+        { "row": 1, "seats": 2, "seatsData": [
+            { "column": 1, "status": "available", "price": 100 },
+            { "column": 2, "status": "occupied", "price": 100 }
+           ]},
+        { "row": 2, "seats": 7, "seatsData": [
+            { "column": 1, "status": "available", "price": 100 },
+            { "column": 2, "status": "available", "price": 100 },
+            { "column": 3, "status": "occupied", "price": 100 },
+            { "column": 4, "status": "available", "price": 100 },
+            { "column": 5, "status": "available", "price": 100 },
+            { "column": 6, "status": "available", "price": 100 },
+            { "column": 7, "status": "available", "price": 100 }
+        ]}],"areaC": [
+        { "row": 1, "seats": 2, "seatsData": [
+            { "column": 1, "status": "available", "price": 100 },
+            { "column": 2, "status": "occupied", "price": 100 }
+           ]},
+        { "row": 2, "seats": 7, "seatsData": [
+            { "column": 1, "status": "available", "price": 100 },
+            { "column": 2, "status": "available", "price": 100 },
+            { "column": 3, "status": "occupied", "price": 100 },
+            { "column": 4, "status": "available", "price": 100 },
+            { "column": 5, "status": "available", "price": 100 },
+            { "column": 6, "status": "available", "price": 100 },
+            { "column": 7, "status": "available", "price": 100 }
+        ]}, { "row": 3, "seats": 5, "seatsData": [
+            { "column": 1, "status": "available", "price": 100 },
+            { "column": 2, "status": "available", "price": 100 },
+            { "column": 3, "status": "occupied", "price": 100 },
+            { "column": 4, "status": "available", "price": 100 },
+            { "column": 5, "status": "available", "price": 100 }
+        ]}, { "row": 4, "seats": 5, "seatsData": [
+            { "column": 1, "status": "occupied", "price": 100 },
+            { "column": 2, "status": "available", "price": 100 },
+            { "column": 3, "status": "occupied", "price": 100 },
+            { "column": 4, "status": "occupied", "price": 100 },
             { "column": 5, "status": "available", "price": 100 }
         ]}]
   }

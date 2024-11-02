@@ -40,8 +40,62 @@
       </div>
     </nav>
 
-    <div class="container contact-section">
-      <h2 class="text-center mb-4">Events</h2>
+    <div class="container">
+      <h2 class="text-center mb-4">Event Management</h2>
+
+      <div class="container mt-5">
+        <div class="d-flex align-items-center justify-content-between">
+          <h2>Event List</h2>
+          <a
+            class="btn btn-outline-secondary mx-3"
+            type="button"
+            id="button-plus"
+            href="./admin-addEvent.html"
+          >
+            Add event +
+          </a>
+        </div>
+
+        <div id="adminEventList" class="list-group">
+          <div class="list-group" id="eventList">
+            <div class="list-group-item stadium-A">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <h5 class="mb-1">
+                    SK Slovan Bratislava vs GNK Dinamo Zagreb
+                  </h5>
+                  <p class="mb-1">Date: 2024-11-15</p>
+                  <p class="mb-1">Stadium: Tehelné Pole Football Stadium</p>
+                </div>
+                <div class="col-md-4">
+                  <img
+                    src="assets/football match1.png"
+                    alt="match1"
+                    class="img-fluid rounded-4"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="list-group-item stadium-B">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <h5 class="mb-1">Match 2: Team C vs Team D</h5>
+                  <p class="mb-1">Date: 2024-11-20</p>
+                  <p class="mb-1">Stadium: Stadium B</p>
+                </div>
+                <div class="col-md-4">
+                  <img
+                    src="assets/football match1.png"
+                    alt="match12"
+                    class="img-fluid rounded-4"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer class="bg-dark text-white text-center fixed-bottom">

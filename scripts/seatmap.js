@@ -1,20 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
     
-
-    
-
     const selectedArea = document.getElementById('ticket-type');
     
     selectedArea.addEventListener('change', (event) => {
         // const selectedValue = event.target.value;
         // console.log("selectedValue", event.target.value)
-        renderSeatMap(event.target.value);
+        renderSeatMapBySelection(event.target.value);
     });
 
     
 })
 
-async function renderSeatMap(selectedArea) {
+async function renderSeatMapBySelection(selectedArea) {
     //change to get from database
     const response = await fetch('../dataStructure/venue-seat.json'); 
     const data = await response.json(); 

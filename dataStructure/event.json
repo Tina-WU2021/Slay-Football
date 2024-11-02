@@ -1,10 +1,18 @@
 [
     {
       "eventTitle": "alice",
-      "eventCoverImage": "ecila",
-      "eventTime": "user",
-      "evenntVenue": "ecila",
-      "evenntDescription": "ecila"
+      "coverImage": "ecila",
+      "time": "user",
+      "venue": "ecila",
+      "description": "ecila"
+    },
+    {
+      "eventTitle": "2",
+      "coverImage": "2",
+      "time": "32324",
+      "venue": "34",
+      "description": "231"
     }
+    
     
   ]
