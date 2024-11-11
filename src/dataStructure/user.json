@@ -3,7 +3,8 @@
       "username": "alice",
       "password": "ecila",
       "email": "user",
-      "userProfileImage": "user"
+      "userProfileImage": "user",
+      "role": "user"
     }
     
   ]
