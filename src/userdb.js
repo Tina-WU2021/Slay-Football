@@ -29,7 +29,7 @@ async function validate_user(username, password) {
     const usersCollection = client.db('SlayFootball').collection('users');
 
     const user = await usersCollection.findOne({ username: username });
-
+    console.log('userdb', user)
     if (!user) {
       return false;
     }
@@ -53,7 +53,7 @@ async function update_user(username, password, role) {
   try {
     const result = await users.updateOne(
       { username: username },
-      { $set: { username: username, password: password, role: role, enabled: enabled } },
+      { $set: { username: username, password: password, role: role, enabled: true } },
       { upsert: true }
     );
 
@@ -72,6 +72,7 @@ async function update_user(username, password, role) {
 async function fetch_user(username) {
   const users = client.db('SlayFootball').collection('users');
   try {
+    // console.log('users', users)
     const data = await users.findOne({ username: username });
     // console.log('data', data);
     return data;
@@ -81,15 +82,15 @@ async function fetch_user(username) {
   }
 }
 
-async function username_exist(username) {
+async function is_username_exist(username) {
   try {
     //   console.log('username',username)
     const user = await fetch_user(username);
-    //   console.log('user',user)
-    return user !== null && user !== undefined;
+      console.log('user',user)
+    return user;
   } catch (error) {
     console.error('Unable to fetch from database!', error);
     return false;
   }
 }
-export { fetch_user, username_exist, update_user, validate_user };
+export { fetch_user, is_username_exist, update_user, validate_user };

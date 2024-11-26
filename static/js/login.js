@@ -27,14 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert(`Logged as \`${result.user.username}\` (${result.user.role})`);
+        localStorage.setItem('userRole', result.user.role);
+        localStorage.setItem('username', result.user.username);
+        
+        alert(`Logged in as ${result.user.username} (${result.user.role})`);
         window.location.href = '/index.html';
       } else {
-        alert(result.message || 'Unknown error');
+        alert(result.message || 'Login failed');
       }
     } catch (error) {
       console.error('Error during login:', error);
-      alert('Unknown error');
+      alert('Login failed. Please try again.');
     }
   });
+
+  const checkLoginStatus = async () => {
+    const username = localStorage.getItem('username');
+    const userRole = localStorage.getItem('userRole');
+    
+    if (username && userRole) {
+      console.log(`Already logged in as ${username} (${userRole})`);
+      window.location.href = '/index.html';
+    }
+  };
+
+  checkLoginStatus();
 });

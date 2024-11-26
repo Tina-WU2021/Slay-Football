@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import fs from 'fs/promises';
-import { fetch_user, username_exist, update_user, validate_user } from './userdb.js';
+import { fetch_user, is_username_exist, update_user, validate_user } from './userdb.js';
 
 const users = new Map();
 
@@ -120,7 +120,7 @@ route.post('/register', form.none(), async (req, res) => {
     // init_userdb();
   }
   console.log(req.body);
-  if (req.body.password && req.body.username) {
+  if (req?.body?.password && req?.body?.username) {
     if (req.body.username.length < 3) {
       const data = {
         status: 'failed',
@@ -128,7 +128,8 @@ route.post('/register', form.none(), async (req, res) => {
       };
       return res.status(400).json(data);
     }
-    if (username_exist(req.body.username)) {
+    // undefine null nan, '', 0 都是false
+    if (!is_username_exist(req.body.username)) {
       const data = {
         status: 'failed',
         message: 'Username ' + req.body.username + ' already exsits',

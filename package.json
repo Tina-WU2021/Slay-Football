@@ -1,6 +1,5 @@
 {
     "name": "21097724d_eie4432_lab4",
-    "version": "1.0",
     "type": "module",
     "main": "src/index.js",
     "scripts": {
@@ -23,5 +22,9 @@
         "express-session": "^1.18.1",
         "mongodb": "6.10",
         "multer": "^1.4.5-lts.1"
-    }
+    },
+    "version": "1.0.0",
+    "description": "connect mongodb with express",
+    "author": "",
+    "license": "ISC"
 }

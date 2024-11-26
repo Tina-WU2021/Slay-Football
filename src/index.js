@@ -4,6 +4,8 @@ import session from 'express-session';
 import login from './login.js';
 import mongoStore from 'connect-mongo';
 import client from './dbclient.js'; 
+import eventRoutes from './events.js';
+import ticketRoutes from './tickets.js';
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/auth', login);
+app.use('/api', eventRoutes);
+app.use('/api', ticketRoutes);
 app.use('/', express.static('static'));
 
 app.get('/', (req, res) => {

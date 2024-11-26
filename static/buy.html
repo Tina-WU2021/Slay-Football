@@ -20,6 +20,53 @@
       .selected {
         fill: rgb(90, 109, 177);
       }
+      .stadium-map {
+        background-color: #f8f9fa;
+        min-height: 400px;
+      }
+      
+      .court-area {
+        background-color: #ddd;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+      }
+      
+      .seating-areas {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+      }
+      
+      .area-box {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      
+      .area-box:hover {
+        transform: scale(1.05);
+      }
+      
+      .area-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .price-label {
+        font-size: 0.9em;
+      }
+      
+      .selected {
+        border: 3px solid #000;
+      }
     </style>
     <script src="./scripts/seatmap.js"></script>
   </head>
@@ -69,13 +116,13 @@
           <p>Venue: Philips Stadion, Eindhoven</p>
           <p>Kick-off: 20:00 CET</p>
 
-          <h5 class="mt-3">Select Ticket Type</h5>
+          <h5 class="mt-3">Select Seating Area</h5>
           <select class="form-select mb-3" id="ticket-type">
             <option value="default" selected>---Please Select---</option>
-            <option value="areaA">Purple area Ticket - $50.00</option>
-            <option value="75">Green area Ticket - $75.00</option>
-            <option value="30">Pink area Ticket - $30.00</option>
-            <option value="100">Blue area Ticket - $100.00</option>
+            <option value="50">Area A - $50.00</option>
+            <option value="75">Area B - $75.00</option>
+            <option value="100">Area C - $100.00</option>
+            <option value="150">Area D (VIP) - $150.00</option>
           </select>
           <div>
             <h5 class="mt-3">Select Ticket Quantity</h5>
@@ -113,38 +160,30 @@
         </div>
         <div class="col-md-7">
           <div class="text-center">
-            <img
-              src="assets/CourtMap.png"
-              alt="courtMap"
-              class="img-fluid"
-              style="max-width: 500px; width: 70%"
-            />
-          </div>
-
-          <div>
-            <h2 class="text-center mt-3">Select Your Seat</h2>
-
-            <div class="row">
-              <div
-                class="court-area"
-                style="
-                  width: 100%;
-                  height: 50px;
-                  background-color: lightgray;
-
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: 24px;
-                  color: black;
-                "
-              >
-                Court
+            <h4 class="mb-4">Stadium Seating Map</h4>
+            <div class="stadium-map border rounded p-4">
+              <div class="court-area mb-4">COURT</div>
+              <div class="seating-areas d-flex justify-content-around mb-3">
+                <div class="area-box" style="background-color: #4CAF50;">
+                  <div class="area-label">Area A</div>
+                  <div class="price-label">$50</div>
+                </div>
+                <div class="area-box" style="background-color: #2196F3;">
+                  <div class="area-label">Area B</div>
+                  <div class="price-label">$75</div>
+                </div>
+                <div class="area-box" style="background-color: #9C27B0;">
+                  <div class="area-label">Area C</div>
+                  <div class="price-label">$100</div>
+                </div>
+                <div class="area-box" style="background-color: #FFC107;">
+                  <div class="area-label">Area D</div>
+                  <div class="price-label">$150</div>
+                </div>
               </div>
-              <h5 class="text-center mt-3" id="selectedSeatDisplay">
-                Seat(s) selected:
-              </h5>
-              <svg id="seatMap" width="600" height="300"></svg>
+              <div id="selected-area" class="text-center mt-3">
+                Selected Area: None
+              </div>
             </div>
           </div>
         </div>
@@ -207,5 +246,11 @@
         );
       });
     </script>
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/buy.js"></script>
   </body>
 </html>

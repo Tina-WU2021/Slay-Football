@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const registerButton = document.getElementById('registerButton');
   const usernameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
-  const repasswordInput = document.getElementById('repassword');
+  const repasswordInput = document.getElementById('confirmPassword');
   const roleOptionInput = document.getElementById('roleOption');
 
   registerButton.addEventListener('click', async (event) => {
@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
+  
     const repassword = repasswordInput.value.trim();
-    const roleOption = roleOptionInput.value.trim();
-
+    const roleOption = roleOptionInput?.value?.trim() || 'user';
     if (!username || !password) {
       alert('Username and password cannot be empty');
       return;
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Password mismatch!');
       return;
     }
-    if (roleOption!=='student' && roleOption!=='user' ) {
-      alert('Please select your role');
-      return;
-    }
+    // if (roleOption!=='student' && roleOption!=='user' ) {
+    //   alert('Please select your role');
+    //   return;
+    // }
 
     const formData = new FormData();
     formData.append('username', username);
