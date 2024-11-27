@@ -4,13 +4,22 @@ import client from './dbclient.js';
 async function init_db() {
   try {
     const users = client.db('SlayFootball').collection('users');
-    const count = await users.countDocuments();
-    if (count === 0) {
+    const seats = client.db('SlayFootball').collection('seats');
+    const countUser = await users.countDocuments();
+    const countSeat = await seats.countDocuments();
+    if (countUser === 0) {
       const data = await fs.readFile('users.json', 'utf-8');
       const temp = JSON.parse(data);
 
       const result = await users.insertMany(temp);
       console.log('Added ' + result.insertedCount + ' users');
+    }
+    if (countSeat === 0) {
+      const data = await fs.readFile('venue-seat.json', 'utf-8');
+      const temp = JSON.parse(data);
+
+      const result = await seats.insertMany(temp);
+      console.log('Added ' + result.insertedCount + ' vanue seats');
     }
   } catch (err) {
     console.error('Unable to initialize the database!');

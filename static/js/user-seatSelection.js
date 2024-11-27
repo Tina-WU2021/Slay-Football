@@ -1,19 +1,29 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    
+    let venueData;
+    try {const response = await fetch('/api/seats');
+        if (!response.ok) {
+            throw new Error('Failed to fetch seats from database');
+        }
+        venueData = await response.json();
+      }
+    catch (error) { console.error('Error:', error);
+        alert('Failed to load venue data. Please try again.');
+    }
+    console.log('venueData',venueData);
     const selectedArea = document.getElementById('ticket-type');
     
     selectedArea.addEventListener('change', (event) => {
         // const selectedValue = event.target.value;
         // console.log("selectedValue", event.target.value)
-        renderSeatMapBySelection(event.target.value);
+        renderSeatMapBySelection(event.target.value,venueData);
     });
 
     
 })
 
-async function renderSeatMapBySelection(selectedArea) {
-    //change to get from database
-    const response = await fetch('../dataStructure/venue-seat.json'); 
+async function renderSeatMapBySelection(selectedArea,response) {
+
+    // const response = await fetch('../dataStructure/venue-seat.json'); 
     const data = await response.json(); 
 
     //change to match with the venue name
