@@ -1,7 +1,7 @@
 [
     {
+        "eventName":"blabla",
         "venueName": "StadiumA",
-        "venuePic": "",
         "areaList": [
             "areaA",
             "areaB",

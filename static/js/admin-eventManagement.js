@@ -1,33 +1,54 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetchEvents();
+document.addEventListener('DOMContentLoaded', async function () {
+  fetchEvents();
+
+  //Loading available venue
+//   let areaData = [];
+//   const addEventVenueList = document.getElementById('addEventVenueList');
+//   try {
+//     const response = await fetch('/api/seats');
+//     if (!response.ok) {
+//       throw new Error('Failed to fetch seats from database');
+//     }
+//     areaData = await response.json();
+//   } catch (error) {
+//     console.error('Error:', error);
+//     alert('Failed to load venue data. Please try again.');
+//   }
+//   console.log('add event venue list:', areaData);
+//   areaData.forEach((venue) => {
+//     const option = document.createElement('option');
+//     option.value = venue.venueName;
+//     option.textContent = venue.venueName;
+//     addEventVenueList.appendChild(option);
+//   });
 });
 
 async function fetchEvents() {
-    try {
-        const response = await fetch('/api/events');
-        if (!response.ok) {
-            throw new Error('Failed to fetch events');
-        }
-        const events = await response.json();
-        displayEvents(events);
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to load events. Please try again.');
+  try {
+    const response = await fetch('/api/events');
+    if (!response.ok) {
+      throw new Error('Failed to fetch events');
     }
+    const events = await response.json();
+    displayEvents(events);
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Failed to load events. Please try again.');
+  }
 }
 
 function displayEvents(events) {
-    const eventList = document.getElementById('eventList');
-    eventList.innerHTML = ''; // Clear existing content
+  const eventList = document.getElementById('eventList');
+  eventList.innerHTML = ''; // Clear existing content
 
-    events.forEach(event => {
-        const eventDate = new Date(event.eventTime).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-        });
+  events.forEach((event) => {
+    const eventDate = new Date(event.eventTime).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
 
-        const eventItem = `
+    const eventItem = `
             <div class="list-group-item" data-event-id="${event._id}">
                 <div class="row align-items-center">
                     <div class="col-md-8">
@@ -46,33 +67,33 @@ function displayEvents(events) {
                 </div>
             </div>
         `;
-        eventList.innerHTML += eventItem;
-    });
+    eventList.innerHTML += eventItem;
+  });
 }
 
 async function deleteEvent(eventId) {
-    if (!confirm('Are you sure you want to delete this event?')) {
-        return;
+  if (!confirm('Are you sure you want to delete this event?')) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`/api/events/${eventId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete event');
     }
 
-    try {
-        const response = await fetch(`/api/events/${eventId}`, {
-            method: 'DELETE'
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to delete event');
-        }
-
-        alert('Event deleted successfully');
-        fetchEvents(); // Refresh the list
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to delete event. Please try again.');
-    }
+    alert('Event deleted successfully');
+    fetchEvents(); // Refresh the list
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Failed to delete event. Please try again.');
+  }
 }
 
 function editEvent(eventId) {
-    // Redirect to add event page with event ID
-    window.location.href = `./admin-addEvent.html?mode=edit&id=${eventId}`;
-} 
+  // Redirect to add event page with event ID
+  window.location.href = `./admin-addEvent.html?mode=edit&id=${eventId}`;
+}
