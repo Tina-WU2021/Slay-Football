@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const form = document.getElementById('addEventForm');
     const urlParams = new URLSearchParams(window.location.search);
     const mode = urlParams.get('mode');
@@ -11,6 +11,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // Load event data
         loadEventData(eventId);
     }
+
+    //get venue from database:
+    let areaData = [];
+    const venueList = document.getElementById('venue');
+    try {
+        const response = await fetch('/api/seats');
+        if (!response.ok) {
+          throw new Error('Failed to fetch seats from database');
+        }
+        areaData = await response.json();
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to load venue data. Please try again.');
+      }
+    console.log('venueData', areaData);
+    areaData.forEach((venue) => {
+        const option = document.createElement('option');
+        option.value = venue.venueName;
+        option.textContent = venue.venueName;
+        venueList.appendChild(option);
+      });
     
     form.addEventListener('submit', async function(e) {
         e.preventDefault();

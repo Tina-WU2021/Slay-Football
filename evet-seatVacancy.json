@@ -1,440 +1,581 @@
 [
-    {
-        "eventName":"blabla",
-        "venueName": "StadiumA",
-        "areaList": [
-            "areaA",
-            "areaB",
-            "areaC"
-        ],
-        "areaA": [
-            {
-                "row": 1,
-                "seats": 5,
-                "price":100,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 3,
-                        "status": "available"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 2,
-                "seats": 7,
-                "price":120,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available",
-                        "price": 100
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    },
-                    {
-                        "column": 6,
-                        "status": "available"
-                    },
-                    {
-                        "column": 7,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 3,
-                "seats": 5,
-                "price":80,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            }
-        ],
-        "areaB": [
-            {
-                "row": 1,
-                "seats": 2,
-                "price":80,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "occupied"
-                    }
-                ]
-            },
-            {
-                "row": 2,
-                "seats": 7,
-                "price":60,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    },
-                    {
-                        "column": 6,
-                        "status": "available"
-                    },
-                    {
-                        "column": 7,
-                        "status": "available"
-                    }
-                ]
-            }
-        ],
-        "areaC": [
-            {
-                "row": 1,
-                "seats": 2,
-                "price":70,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "occupied"
-                    }
-                ]
-            },
-            {
-                "row": 2,
-                "seats": 7,
-                "price":50,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    },
-                    {
-                        "column": 6,
-                        "status": "available"
-                    },
-                    {
-                        "column": 7,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 3,
-                "seats": 5,
-                "price":40,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 4,
-                "seats": 5,
-                "price":30,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            }
-        ]
-    },
   {
-        "venueName": "StadiumB",
-        "venuePic": "",
-        "areaList": [
-            "areaA",
-            "areaB",
-            "areaC"
-        ],
-        "areaA": [
-            {
-                "row": 1,
-                "seats": 5,
-                "price":200,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 3,
-                        "status": "available"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 2,
-                "seats": 7,
-                "price":80,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    },
-                    {
-                        "column": 6,
-                        "status": "available"
-                    },
-                    {
-                        "column": 7,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 3,
-                "seats": 5,
-                "price":70,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            }
-        ],
-        "areaB": [
-            {
-                "row": 1,
-                "seats": 2,
-                "price":100,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "occupied"
-                    }
-                ]
-            },
-            {
-                "row": 2,
-                "seats": 7,
-                "price":90,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    },
-                    {
-                        "column": 6,
-                        "status": "available"
-                    },
-                    {
-                        "column": 7,
-                        "status": "available"
-                    }
-                ]
-            },
-            {
-                "row": 3,
-                "seats": 5,
-                "price":60,
-                "seatsData": [
-                    {
-                        "column": 1,
-                        "status": "available"
-                    },
-                    {
-                        "column": 2,
-                        "status": "available"
-                    },
-                    {
-                        "column": 3,
-                        "status": "occupied"
-                    },
-                    {
-                        "column": 4,
-                        "status": "available"
-                    },
-                    {
-                        "column": 5,
-                        "status": "available"
-                    }
-                ]
-            }
+    "eventID": "6745dd5daaa9c1d9d56c0845",
+    "eventName": "Event name1",
+    "eventTime": "2024-11-25T17:40:00.000+00:00",
+    "venueName": "StadiumA",
+    "areaList": ["areaA", "areaB", "areaC"],
+    "areaA": [
+      {
+        "row": 1,
+        "seats": 5,
+        "price": 100,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          },
+          {
+            "column": 3,
+            "status": "available"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
         ]
-    }
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 120,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available",
+            "price": 100
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 3,
+        "seats": 5,
+        "price": 80,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      }
+    ],
+    "areaB": [
+      {
+        "row": 1,
+        "seats": 2,
+        "price": 80,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          }
+        ]
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 60,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      }
+    ],
+    "areaC": [
+      {
+        "row": 1,
+        "seats": 2,
+        "price": 70,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          }
+        ]
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 50,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 3,
+        "seats": 5,
+        "price": 40,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 4,
+        "seats": 5,
+        "price": 30,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "occupied"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "occupied"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "eventID": "sthsth",
+    "eventName": "testing data 2",
+    "eventTime": "2024-11-29T17:40:00.000+00:00",
+    "venueName": "StadiumB",
+
+    "areaList": ["areaA", "areaB", "areaC", "areaD"],
+    "areaA": [
+      {
+        "row": 1,
+        "seats": 5,
+        "price": 200,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          },
+          {
+            "column": 3,
+            "status": "available"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 80,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 3,
+        "seats": 5,
+        "price": 70,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      }
+    ],
+    "areaB": [
+      {
+        "row": 1,
+        "seats": 2,
+        "price": 100,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          }
+        ]
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 90,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 3,
+        "seats": 5,
+        "price": 60,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      }
+    ],
+    "areaC": [
+      {
+        "row": 1,
+        "seats": 5,
+        "price": 100,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          },
+          {
+            "column": 3,
+            "status": "available"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 120,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available",
+            "price": 100
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      },
+      {
+        "row": 3,
+        "seats": 5,
+        "price": 80,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          }
+        ]
+      }
+    ],
+    "areaD": [
+      {
+        "row": 1,
+        "seats": 2,
+        "price": 80,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "occupied"
+          }
+        ]
+      },
+      {
+        "row": 2,
+        "seats": 7,
+        "price": 60,
+        "seatsData": [
+          {
+            "column": 1,
+            "status": "available"
+          },
+          {
+            "column": 2,
+            "status": "available"
+          },
+          {
+            "column": 3,
+            "status": "occupied"
+          },
+          {
+            "column": 4,
+            "status": "available"
+          },
+          {
+            "column": 5,
+            "status": "available"
+          },
+          {
+            "column": 6,
+            "status": "available"
+          },
+          {
+            "column": 7,
+            "status": "available"
+          }
+        ]
+      }
+    ]
+  }
 ]

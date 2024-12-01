@@ -9,31 +9,29 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (venueName) {
     addVenueVenueName.value = decodeURIComponent(venueName);
     // console.log('addVenueVenueName',addVenueVenueName.value)
-    
-  let currentUpdatingVenueName = addVenueVenueName.value;
-  let areaData = [];
-  try {
-    const response = await fetch('/api/seats');
-    if (!response.ok) {
-      throw new Error('Failed to fetch seats from database');
+
+    let currentUpdatingVenueName = addVenueVenueName.value;
+    let areaData = [];
+    try {
+      const response = await fetch('/api/seats');
+      if (!response.ok) {
+        throw new Error('Failed to fetch seats from database');
+      }
+      areaData = await response.json();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to load venue data. Please try again.');
     }
-    areaData = await response.json();
-  } catch (error) {
-    console.error('Error:', error);
-    alert('Failed to load venue data. Please try again.');
-  }
-  console.log('venueData', areaData);
+    console.log('venueData', areaData);
 
-  const matchedVenue = areaData.find((venue) => venue.venueName === currentUpdatingVenueName);
-  matchedVenueIDForUpdate = matchedVenue._id;
-  if (matchedVenue) {
-    whenUpdateDisplayPrevious.textContent = 'Previously selected area: '+ String(matchedVenue.areaList)
-  } else {
-    console.log('No matching venue found.');
+    const matchedVenue = areaData.find((venue) => venue.venueName === currentUpdatingVenueName);
+    matchedVenueIDForUpdate = matchedVenue._id;
+    if (matchedVenue) {
+      whenUpdateDisplayPrevious.textContent = 'Previously selected area: ' + String(matchedVenue.areaList);
+    } else {
+      console.log('No matching venue found.');
+    }
   }
-  }
-
-
 
   //create vaneu-add selected area
   const checkboxes = document.querySelectorAll('input[name="area"]');
@@ -86,9 +84,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.getElementById('submitAddVenue').addEventListener('click', async (event) => {
     event.preventDefault();
-    
+
     const venuName = document.getElementById('addVenueVenueName').value.trim();
-    
+
     const newVenueData = {
       venueName: venuName,
       venuePic: '',
@@ -124,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     console.log(newVenueData);
-    
+
     //The database
 
     //update
@@ -138,12 +136,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             },
             body: JSON.stringify(newVenueData),
           });
-    
+
           if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message || 'Failed to save venue seats');
           }
-    
+
           const result = await response.json();
           alert('Venue seat updated successfully!', result);
           window.location.href = './admin-seatManagement.html';
@@ -152,29 +150,29 @@ document.addEventListener('DOMContentLoaded', async () => {
           alert(error.message || 'Failed to update Venue seat. Please try again.');
         }
       }
-    } else { 
+    } else {
+      //create new
+      try {
+        const response = await fetch('/api/seats', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newVenueData),
+        });
 
-    //create new
-    try {
-      const response = await fetch('/api/seats', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newVenueData),
-      });
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to save venue seats');
+        }
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to save venue seats');
+        const result = await response.json();
+        alert('Venue seat created successfully!', result);
+        window.location.href = './admin-seatManagement.html';
+      } catch (error) {
+        console.error('Error:', error);
+        alert(error.message || 'Failed to save Venue seat. Please try again.');
       }
-
-      const result = await response.json();
-      alert('Venue seat created successfully!', result);
-      window.location.href = './admin-seatManagement.html';
-    } catch (error) {
-      console.error('Error:', error);
-      alert(error.message || 'Failed to save Venue seat. Please try again.');
-    }}
+    }
   });
 });

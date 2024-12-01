@@ -7,9 +7,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <title>Ticket Booking - PSV Eindhoven vs Girona FC</title>
+      crossorigin="anonymous" />
+    <title>Ticket Booking</title>
     <style>
       .available {
         fill: rgb(73, 80, 73); /
@@ -20,24 +19,56 @@
       .selected {
         fill: rgb(90, 109, 177);
       }
+
+      svg text {
+            pointer-events: none; /* Prevents text from blocking clicks on seats */
+        }
+        .seat {
+            cursor: pointer; /* Show pointer cursor on hover */
+        }
+
       .stadium-map {
         background-color: #f8f9fa;
         min-height: 400px;
       }
-      
+
       .court-area {
         background-color: #ddd;
         padding: 15px;
         text-align: center;
         font-weight: bold;
       }
-      
-      .seating-areas {
+
+      #payment-form-popup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; /* Set width as needed */
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensure it's on top */
+            padding: 20px;
+        }
+        #overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 999; /* Behind the pop-up */
+        }
+      /* .seating-areas {
         display: flex;
         justify-content: space-around;
         padding: 20px;
       }
-      
+
       .area-box {
         width: 100px;
         height: 100px;
@@ -50,25 +81,26 @@
         cursor: pointer;
         transition: transform 0.2s;
       }
-      
+
       .area-box:hover {
         transform: scale(1.05);
       }
-      
+
       .area-label {
         font-weight: bold;
         margin-bottom: 5px;
       }
-      
+
       .price-label {
         font-size: 0.9em;
       }
-      
+
       .selected {
         border: 3px solid #000;
-      }
+      } */
     </style>
-    <script src="./scripts/seatmap.js"></script>
+    <script src="./js/user-seatSelection.js"></script>
+    <!-- <script src="./js/buy.js"></script> -->
   </head>
 
   <body class="bg-light">
@@ -82,8 +114,7 @@
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -103,105 +134,103 @@
     </nav>
 
     <div class="container pt-3">
-      <h2 class="text-center mb-4">Tehelné Pole Football Stadium</h2>
+      <h2 class="text-center mb-4" id="buy-eventName"></h2>
       <div class="row">
         <div class="col-md-5">
-          <img
-            src="assets/football match1.png"
-            alt="match1"
-            class="img-fluid"
-          />
+          <img src="assets/football match1.png" alt="match1" class="img-fluid" />
           <h5 class="mt-3">Match Details</h5>
-          <p>Date: 2024-11-15</p>
-          <p>Venue: Philips Stadion, Eindhoven</p>
-          <p>Kick-off: 20:00 CET</p>
+          <div id="buy-dateDisplay"></div>
+          <div id="buy-venueName"></div>
 
           <h5 class="mt-3">Select Seating Area</h5>
-          <select class="form-select mb-3" id="ticket-type">
+          <select class="form-select mb-3" id="buy-seatArea">
             <option value="default" selected>---Please Select---</option>
-            <option value="50">Area A - $50.00</option>
-            <option value="75">Area B - $75.00</option>
-            <option value="100">Area C - $100.00</option>
-            <option value="150">Area D (VIP) - $150.00</option>
+            <!-- <option value="areaA">Area A</option>
+            <option value="areaB">Area B</option>
+            <option value="areaC">Area C</option>
+            <option value="areaD">Area D</option> -->
           </select>
-          <div>
+          <!-- <div>
             <h5 class="mt-3">Select Ticket Quantity</h5>
             <div class="input-group mb-3">
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="button-minus"
-              >
-                -
-              </button>
-              <input
-                type="text"
-                class="form-control text-center"
-                id="ticket-quantity"
-                value="1"
-                readonly
-              />
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="button-plus"
-              >
-                +
-              </button>
+              <button class="btn btn-outline-secondary" type="button" id="button-minus">-</button>
+              <input type="text" class="form-control text-center" id="ticket-quantity" value="1" readonly />
+              <button class="btn btn-outline-secondary" type="button" id="button-plus">+</button>
             </div>
-          </div>
-          <h5 class="mt-3">Total Price</h5>
-          <p>
-            Total Price: <span id="total-price" class="fw-bold">$50.00</span>
-          </p>
-          <button class="btn btn-primary mt-3" id="book-tickets">
-            Book Tickets
-          </button>
+          </div> -->
+          <h5 class="mt-3">Total Price: $<span id="total-price" class="fw-bold">0</span></h5>
+
+          <a class="btn btn-primary mt-3" id="book-tickets">Book Tickets</a>
         </div>
         <div class="col-md-7">
           <div class="text-center">
             <h4 class="mb-4">Stadium Seating Map</h4>
             <div class="stadium-map border rounded p-4">
               <div class="court-area mb-4">COURT</div>
-              <div class="seating-areas d-flex justify-content-around mb-3">
-                <div class="area-box" style="background-color: #4CAF50;">
+              <!-- <div class="seating-areas d-flex justify-content-around mb-3">
+                <div class="area-box" style="background-color: #4caf50">
                   <div class="area-label">Area A</div>
                   <div class="price-label">$50</div>
                 </div>
-                <div class="area-box" style="background-color: #2196F3;">
+                <div class="area-box" style="background-color: #2196f3">
                   <div class="area-label">Area B</div>
                   <div class="price-label">$75</div>
                 </div>
-                <div class="area-box" style="background-color: #9C27B0;">
+                <div class="area-box" style="background-color: #9c27b0">
                   <div class="area-label">Area C</div>
                   <div class="price-label">$100</div>
                 </div>
-                <div class="area-box" style="background-color: #FFC107;">
+                <div class="area-box" style="background-color: #ffc107">
                   <div class="area-label">Area D</div>
                   <div class="price-label">$150</div>
                 </div>
-              </div>
-              <div id="selected-area" class="text-center mt-3">
-                Selected Area: None
-              </div>
+              </div> -->
+              <!-- <div id="selected-area" class="text-center mt-3">Selected Area: None</div> -->
+              <svg id="seatMap" width="600" height="300"></svg>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container mt-5"></div>
+    <div id="overlay"></div>
+    <div id="payment-form-popup">
+      <h5>Payment Details</h5>
+      <form id="payment-form">
+        <div class="form-group my-1">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" class="form-control" id="cardNumber" placeholder="Enter your card number" required />
+        </div>
+        <div class="form-group my-1">
+          <label for="expirationDate">Expiration Date (MM/YY)</label>
+          <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY" required />
+        </div>
+        <div class="form-group my-1">
+          <label for="cvv">CVV</label>
+          <input type="text" class="form-control" id="cvv" placeholder="Enter your CVV" required />
+        </div>
+        <div class="form-group my-1">
+          <label for="billingAddress">Billing Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="billingAddress"
+            placeholder="Enter your billing address"
+            required />
+        </div>
+        <button id="confirm-payment" class="btn btn-primary">Submit Payment</button>
+        <button type="button" id="close-popup" class="btn btn-secondary">Cancel</button>
+      </form>
+    </div>
 
-    <footer class="bg-dark text-white text-center fixed-bottom">
-      ©Slay Football - EIE4432 Group Project
-    </footer>
+    <footer class="bg-dark text-white text-center fixed-bottom">©Slay Football - EIE4432 Group Project</footer>
 
-    <script>
-      const buttonMinus = document.getElementById("button-minus");
-      const buttonPlus = document.getElementById("button-plus");
-      const ticketQuantity = document.getElementById("ticket-quantity");
-      const totalPrice = document.getElementById("total-price");
-      const ticketType = document.getElementById("ticket-type");
+    <!-- <script>
+      const buttonMinus = document.getElementById('button-minus');
+      const buttonPlus = document.getElementById('button-plus');
+      const ticketQuantity = document.getElementById('ticket-quantity');
+      const totalPrice = document.getElementById('total-price');
+      const ticketType = document.getElementById('ticket-type');
 
       let quantity = 1;
       const maxQuantity = 5;
@@ -211,7 +240,7 @@
         totalPrice.innerText = `$${(quantity * pricePerTicket).toFixed(2)}`;
       }
 
-      buttonMinus.addEventListener("click", () => {
+      buttonMinus.addEventListener('click', () => {
         if (quantity > 1) {
           quantity--;
           ticketQuantity.value = quantity;
@@ -219,8 +248,8 @@
         }
       });
 
-      buttonPlus.addEventListener("click", () => {
-        if (quantity < maxQuantity && ticketType.value !== "150") {
+      buttonPlus.addEventListener('click', () => {
+        if (quantity < maxQuantity && ticketType.value !== '150') {
           // VIP ticket cannot increase quantity
           quantity++;
           ticketQuantity.value = quantity;
@@ -228,29 +257,28 @@
         }
       });
 
-      ticketType.addEventListener("change", () => {
-        if (ticketType.value === "150") {
+      ticketType.addEventListener('change', () => {
+        if (ticketType.value === '150') {
           // If VIP is selected
           quantity = 1;
           ticketQuantity.value = quantity;
-          ticketQuantity.setAttribute("readonly", true); // Disable input
+          ticketQuantity.setAttribute('readonly', true); // Disable input
         } else {
-          ticketQuantity.removeAttribute("readonly"); // Enable input
+          ticketQuantity.removeAttribute('readonly'); // Enable input
         }
         updateTotalPrice();
       });
 
-      document.getElementById("book-tickets").addEventListener("click", () => {
+      document.getElementById('book-tickets').addEventListener('click', () => {
         alert(
           `You have booked ${quantity} tickets for a total of $${(quantity * parseFloat(ticketType.value)).toFixed(2)}`
         );
       });
     </script>
-    <script 
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/buy.js"></script>
+      crossorigin="anonymous"></script>
+    <script src="js/buy.js"></script> -->
   </body>
 </html>

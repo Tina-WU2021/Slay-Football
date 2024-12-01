@@ -21,27 +21,34 @@ function RenderUserList(users) {
   users.forEach((user) => {
     const userDiv = document.createElement('div');
 
-                Object.assign(userDiv.style, {
-                    width: '400px',
-                    backgroundColor: '#f0f0f0',
-                    border: '1px solid #ccc',
-                    padding: '10px',
-                    margin: '10px',
-                    boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.1)',
-                    borderRadius: '5px',
-                    display: 'flex',
-                    flexDirection: 'column'
-                });
+    Object.assign(userDiv.style, {
+      width: '450px',
+      backgroundColor: '#f0f0f0',
+      border: '1px solid #ccc',
+      padding: '10px',
+      margin: '10px',
+      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.1)',
+      borderRadius: '5px',
+      display: 'flex',
+      flexDirection: 'column',
+    });
 
-                // Create user information elements
-                userDiv.innerHTML = `
-                    <h3>Username: ${user.username}</h3>
-                    <p>Password: ${user.password}</p>
-                    <p>Email: ${user.email}</p>
-                    <p>Role: ${user.role}</p>
-                    <img src="${user.userProfileImage}" alt="${user.username}'s profile image" style="max-width: 100%; height: auto;">
+    // Create user information elements
+    userDiv.innerHTML = `
+              <div class="row">
+                <div class="col-md-7">
+                  <h3>Username: ${user.username}</h3>
+                  <p>Password: ${user.password}</p>
+                  <p>Email: ${user.email}</p>
+                  <p>Role: ${user.role}</p>
+                </div>
+                <div class="col-md-5">
+                  <img src="${user.userProfileImage}" alt="${user.username}'s profile image" class="img-fluid" style="max-width: 150px; height: auto;">
+                </div>
+              </div>
+                    
                 `;
 
-                userContainer.appendChild(userDiv);
+    userContainer.appendChild(userDiv);
   });
 }

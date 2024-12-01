@@ -1,18 +1,16 @@
 [
   {
-    "user": "alice",
-    "time": "ecila",
-    "event": {
-      "title": "",
-      "description": ""
-    },
-    "seat": [
+    "username": "alice",
+    "eventID": "6745dd5daaa9c1d9d56c0845",
+    "paidAmount":320,
+    "paidTime" :"2024-11-25T17:40:00.000+00:00",
+    "venueName": "StadiumA",
+    "TicketNO" :"" ,
+    "seatPurchased": [
       {
         "row": "",
-        "column": "",
-        "price": 100
+        "column": ""
       }
-    ],
-    "paidAmount": 200
+    ]
   }
 ]

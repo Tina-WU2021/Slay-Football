@@ -5,8 +5,10 @@ async function init_db() {
   try {
     const users = client.db('SlayFootball').collection('users');
     const seats = client.db('SlayFootball').collection('seats');
+    const eventSeatStatus = client.db('SlayFootball').collection('eventSeatStatus');
     const countUser = await users.countDocuments();
     const countSeat = await seats.countDocuments();
+    const countEventSeatStatus = await eventSeatStatus.countDocuments();
     if (countUser === 0) {
       const data = await fs.readFile('users.json', 'utf-8');
       const temp = JSON.parse(data);
@@ -20,6 +22,13 @@ async function init_db() {
 
       const result = await seats.insertMany(temp);
       console.log('Added ' + result.insertedCount + ' vanue seats');
+    }
+    if (countEventSeatStatus === 0) {
+      const data = await fs.readFile('evet-seatVacancy.json', 'utf-8');
+      const temp = JSON.parse(data);
+
+      const result = await eventSeatStatus.insertMany(temp);
+      console.log('Added ' + result.insertedCount + ' event seat status');
     }
   } catch (err) {
     console.error('Unable to initialize the database!');
